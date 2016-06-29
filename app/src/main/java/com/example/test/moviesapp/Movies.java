@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class Movies {
 
+    public static ArrayList<movie> mlist;
+
+
     public static class movie
     {
         String movie_url;
@@ -12,6 +15,21 @@ public class Movies {
             this.movie_url = movie_url;
         }
     }
+
+
+   public static  ArrayList<movie> initialize_movie(String jsonstr)
+   {
+       ArrayList<String> movies=JsonTest.get_movies(jsonstr);
+       mlist=new ArrayList<>();
+       for(int i=0;i<movies.size();i++) {
+
+
+           mlist.add(new movie(movies.get(i)));
+
+       }
+       return mlist;
+
+   }
 
    public static ArrayList<movie> getMovies()
     {
