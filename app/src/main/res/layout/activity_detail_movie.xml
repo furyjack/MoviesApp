@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#212121"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    >
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+        android:orientation="vertical"
+        tools:context="com.example.test.moviesapp.Detail_Movie_Activity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#01579B"
+            android:padding="18dp"
+            android:text="Interstellar (2014)"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+
+            android:paddingTop="8dp">
+
+
+            <ImageView
+                android:id="@+id/iv_detail_poster"
+                android:layout_width="200dp"
+                android:layout_height="300dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/isample"
+
+                />
+
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                android:text="8.0/10"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
+
+
+                android:layout_marginBottom="25dp"
+                android:layout_alignBottom="@+id/iv_detail_poster"
+                android:layout_alignLeft="@+id/textView"
+                android:layout_alignStart="@+id/textView" />
+
+            <TextView
+                android:id="@+id/level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="U/A"
+                android:textColor="#ffffff"
+                android:textSize="50sp"
+                android:textStyle="bold"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_alignTop="@+id/iv_detail_poster"
+                android:layout_toRightOf="@+id/iv_detail_poster"
+                android:layout_toEndOf="@+id/iv_detail_poster" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Released -"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
+
+                android:id="@+id/textView"
+                android:layout_centerVertical="true"
+                android:layout_alignLeft="@+id/level"
+                android:layout_alignStart="@+id/level" />
+
+            <TextView
+                android:id="@+id/release_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="26-12-2018"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+
+                android:layout_marginRight="19dp"
+                android:layout_marginEnd="19dp"
+                android:layout_above="@+id/rating"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="11dp" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="OverView"
+
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:padding="10dp"
+            android:text="Since the dawn of civilization, he was worshipped as a god. Apocalypse, the first and most powerful mutant from Marvel’s X-Men universe, amassed the powers of many other mutants, becoming immortal and invincible. Upon awakening after thousands of years, he is disillusioned with the world as he finds it and recruits a team of powerful mutants, including a disheartened Magneto, to cleanse mankind and create a new world order, over which he will reign. As the fate of the Earth hangs in the balance, Raven with the help of Professor X must lead a team of young X-Men to stop their greatest nemesis and save mankind from complete destruction."
+
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+
+</ScrollView>

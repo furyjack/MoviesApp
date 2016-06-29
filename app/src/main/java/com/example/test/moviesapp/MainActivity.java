@@ -1,5 +1,6 @@
 package com.example.test.moviesapp;
 
+import android.content.Intent;
 import android.graphics.Movie;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -79,7 +80,13 @@ public class MainActivity extends AppCompatActivity  {
 
             Movies.movie mobject=movieArrayList.get(position);
             Picasso.with(getApplicationContext()).load(mobject.movie_url).into(holder.ivMoviePoster);
-
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent go_deatil=new Intent(getApplicationContext(),Detail_Movie_Activity.class);
+                    startActivity(go_deatil);
+                }
+            });
         }
 
         @Override
