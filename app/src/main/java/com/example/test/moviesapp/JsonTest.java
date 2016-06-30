@@ -161,7 +161,7 @@ public class JsonTest {
             for(int i=0;i<jsonArray.length();i++)
             {
                 JSONObject obj=jsonArray.getJSONObject(i);
-                String overview=obj.getString("original_title");
+                String overview=obj.getString("title");
                 movielist.add(overview);
 
 
