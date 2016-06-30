@@ -49,7 +49,7 @@ public class Detail_Movie_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_movie);
-        getSupportActionBar().hide();
+
         init_vars();
         set_vars();
 

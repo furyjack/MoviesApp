@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="movie_cat_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+
+    </string-array>
+
+    <string-array name="movie_category">
+
+        <item>
+            Most popular
+        </item>
+
+         <item>
+            Top Rated
+        </item>
+         <item>
+            Releasing Soon
+        </item>
+         <item>
+            Currently playing
+        </item>
+
+
+    </string-array>
+
+
+
+</resources>
