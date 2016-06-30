@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<ListPreference
+    android:title="Movie Categories Top"
+    android:defaultValue="0"
+    android:entries="@array/movie_category"
+    android:key="@string/mv_cat_key"
+    android:entryValues="@array/movie_cat_value"
+
+   />
+
+    <ListPreference
+        android:title="Movie Categories Bottom"
+        android:defaultValue="1"
+        android:entries="@array/movie_category"
+        android:key="@string/mv_cat_key1"
+        android:entryValues="@array/movie_cat_value"
+
+        />
+
+
+
+
+
+
+</PreferenceScreen>
