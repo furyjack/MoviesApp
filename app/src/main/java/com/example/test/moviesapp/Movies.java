@@ -47,24 +47,7 @@ public class Movies {
 
    }
 
-   /*public static ArrayList<movie> getMovies()
-    {
-        ArrayList<movie> mlist=new ArrayList<>(10);
-        mlist.add(new movie("http://image.tmdb.org/t/p/w780//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg"));
-        mlist.add(new movie("http://image.tmdb.org/t/p/w780///zSouWWrySXshPCT4t3UKCQGayyo.jpg"));
-        mlist.add(new movie("http://image.tmdb.org/t/p/w780//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg"));
-        mlist.add(new movie("http://image.tmdb.org/t/p/w780///zSouWWrySXshPCT4t3UKCQGayyo.jpg"));
-        mlist.add(new movie("http://image.tmdb.org/t/p/w780//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg"));
-        mlist.add(new movie("http://image.tmdb.org/t/p/w780///zSouWWrySXshPCT4t3UKCQGayyo.jpg"));
-        mlist.add(new movie("http://image.tmdb.org/t/p/w780//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg"));
-        mlist.add(new movie("http://image.tmdb.org/t/p/w780///zSouWWrySXshPCT4t3UKCQGayyo.jpg"));
-        mlist.add(new movie("http://image.tmdb.org/t/p/w780//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg"));
-        mlist.add(new movie("http://image.tmdb.org/t/p/w780///zSouWWrySXshPCT4t3UKCQGayyo.jpg"));
 
-        return mlist;
-
-    }
-*/
 
 
 }
