@@ -89,7 +89,8 @@ public class DisplaySection extends Fragment {
         Bundle args=getArguments();
         type=args.getString("title");
         query=args.getString("query");
-        context=((MainActivity)getActivity()).getApplicationContext();
+
+        context=(getActivity()).getApplicationContext();
 
 
 
