@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -32,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_menu_white_48dp, R.string.app_name, R.string.app_name);
+
 
         // Set the adapter for the list view
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
@@ -51,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         myToolbar.setTitle(R.string.app_name);
 
-
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,true,
+                R.drawable.ic_menu_white_48dp, R.string.app_name, R.string.app_name);
 
     }
 
