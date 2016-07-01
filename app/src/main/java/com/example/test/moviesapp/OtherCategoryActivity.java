@@ -93,8 +93,8 @@ public class OtherCategoryActivity extends AppCompatActivity {
         FragmentTransaction txn=mngr.beginTransaction();
         if(pos==1)
         {
-         DisplaySection top=DisplaySection.newInstance("Most Popular Movies","http://api.themoviedb.org/3/movie/popular?api_key=a444d7a7a662a5a702515b3735ee4f49");
-            DisplaySection bottom=DisplaySection.newInstance("Most Popular Movies","http://api.themoviedb.org/3/movie/now_playing?api_key=a444d7a7a662a5a702515b3735ee4f49");
+         DisplaySectionTv top=DisplaySectionTv.newInstance("Most Popular TV","http://api.themoviedb.org/3/tv/popular?api_key=a444d7a7a662a5a702515b3735ee4f49");
+            DisplaySectionTv bottom=DisplaySectionTv.newInstance("Now On Air","http://api.themoviedb.org/3/tv/on_the_air?api_key=a444d7a7a662a5a702515b3735ee4f49");
 
             txn.add(R.id.frag_container_1,top,null);
             txn.add(R.id.frag_container_2,bottom,null).commit();
