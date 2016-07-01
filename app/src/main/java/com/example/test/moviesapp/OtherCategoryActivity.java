@@ -1,10 +1,7 @@
 package com.example.test.moviesapp;
 
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -18,15 +15,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-
-public class MainActivity extends AppCompatActivity {
-
-
+public class OtherCategoryActivity extends AppCompatActivity {
     public static final String TAG = "haala";
+ private int pos;
 
 
-
-void settoolbar_nav()
+    void settoolbar_nav()
     {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -48,19 +42,28 @@ void settoolbar_nav()
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     if(position==0)
                     {
+
+
+                        Intent i=new Intent(OtherCategoryActivity.this,MainActivity.class);
+                        startActivity(i);
+
+
+
+                    }
+                    else if(position==pos)
+                    {
+
                         mdrawerlist.setItemChecked(position, true);
                         mdrawer.closeDrawer(mdrawerlist);
-
 
 
                     }
                     else
                     {
-                        Intent i=new Intent(MainActivity.this,OtherCategoryActivity.class);
+
+                        Intent i=new Intent(OtherCategoryActivity.this,OtherCategoryActivity.class);
                         i.putExtra("pos",position);
                         startActivity(i);
-
-
 
                     }
                 }
@@ -72,62 +75,48 @@ void settoolbar_nav()
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+         pos = getIntent().getIntExtra("pos", 0);
         settoolbar_nav();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String frag1 = prefs.getString(getString(R.string.mv_cat_key),
-                "0");
-        String frag2 = prefs.getString(getString(R.string.mv_cat_key1),
-                "1");
-
-        DisplaySection top=null;
-        DisplaySection bottom=null;
-        switch (frag1)
-        {
-            case "0":
-                top=DisplaySection.newInstance("Most Popular Movies","http://api.themoviedb.org/3/movie/popular?api_key=a444d7a7a662a5a702515b3735ee4f49");
-                break;
-            case "1":
-                top=DisplaySection.newInstance("Top Rated Movies","http://api.themoviedb.org/3/movie/top_rated?api_key=a444d7a7a662a5a702515b3735ee4f49");
-                break;
-            case "2":
-                top=DisplaySection.newInstance("Upcoming Movies","http://api.themoviedb.org/3/movie/upcoming?api_key=a444d7a7a662a5a702515b3735ee4f49");
-                break;
-            case "3":
-                top=DisplaySection.newInstance("Currently Playing","http://api.themoviedb.org/3/movie/now_playing?api_key=a444d7a7a662a5a702515b3735ee4f49");
-                break;
-
-        }
-        switch (frag2)
-        {
-
-            case "0":
-                bottom=DisplaySection.newInstance("Most Popular Movies","http://api.themoviedb.org/3/movie/popular?api_key=a444d7a7a662a5a702515b3735ee4f49");
-                break;
-            case "1":
-                bottom=DisplaySection.newInstance("Top Rated Movies","http://api.themoviedb.org/3/movie/top_rated?api_key=a444d7a7a662a5a702515b3735ee4f49");
-                break;
-            case "2":
-                bottom=DisplaySection.newInstance("Upcoming Movies","http://api.themoviedb.org/3/movie/upcoming?api_key=a444d7a7a662a5a702515b3735ee4f49");
-                break;
-            case "3":
-                bottom=DisplaySection.newInstance("Currently Playing","http://api.themoviedb.org/3/movie/now_playing?api_key=a444d7a7a662a5a702515b3735ee4f49");
-                break;
-
-        }
         FragmentManager mngr=getSupportFragmentManager();
 
         FragmentTransaction txn=mngr.beginTransaction();
-        txn.add(R.id.frag_container_1,top,null);
-        txn.add(R.id.frag_container_2,bottom,null).commit();
+        if(pos==1)
+        {
+         DisplaySection top=DisplaySection.newInstance("Most Popular Movies","http://api.themoviedb.org/3/movie/popular?api_key=a444d7a7a662a5a702515b3735ee4f49");
+            DisplaySection bottom=DisplaySection.newInstance("Most Popular Movies","http://api.themoviedb.org/3/movie/now_playing?api_key=a444d7a7a662a5a702515b3735ee4f49");
+
+            txn.add(R.id.frag_container_1,top,null);
+            txn.add(R.id.frag_container_2,bottom,null).commit();
+
+
+
+        }
+        else
+
+        {
+
+          comingsoonfrag comingsoonfrag=new comingsoonfrag();
+
+            txn.add(R.id.frag_container_1,comingsoonfrag,null).commit();
+
+
+
+
+
+        }
+
+
 
 
     }
@@ -149,4 +138,8 @@ void settoolbar_nav()
         return true;
 
     }
+
+
+
+
 }

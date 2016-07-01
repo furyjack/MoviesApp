@@ -7,6 +7,16 @@
         <item>3</item>
 
     </string-array>
+    <string-array name="titile">
+        <item>Movies</item>
+        <item>Tv shows</item>
+        <item>Celebs</item>
+        <item>Review</item>
+
+
+
+    </string-array>
+
 
     <string-array name="movie_category">
 
