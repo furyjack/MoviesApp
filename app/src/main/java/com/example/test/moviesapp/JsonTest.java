@@ -11,7 +11,7 @@ public class JsonTest {
 
     static ArrayList<String> get_movies(String jsonstr)
     {
-
+String path;
      ArrayList<String>movielist=new ArrayList<>(5);
 
         try {
@@ -21,7 +21,8 @@ public class JsonTest {
             for(int i=0;i<jsonArray.length();i++)
             {
                 JSONObject obj=jsonArray.getJSONObject(i);
-                String path="http://image.tmdb.org/t/p/w185/"+obj.getString("poster_path");
+
+                 path="http://image.tmdb.org/t/p/w185/"+obj.getString("poster_path");
                 movielist.add(path);
 
 

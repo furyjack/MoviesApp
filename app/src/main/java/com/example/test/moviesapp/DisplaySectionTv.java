@@ -150,6 +150,9 @@ public class DisplaySectionTv extends Fragment{
 
             Tvs.tv mobject = tvArrayList.get(position);
             Picasso.with(context).load(mobject.poster_url).into(holder.ivMoviePoster);
+
+
+
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
