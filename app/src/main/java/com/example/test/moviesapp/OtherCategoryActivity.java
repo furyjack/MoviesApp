@@ -1,7 +1,9 @@
 package com.example.test.moviesapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -91,10 +93,55 @@ public class OtherCategoryActivity extends AppCompatActivity {
         FragmentManager mngr=getSupportFragmentManager();
 
         FragmentTransaction txn=mngr.beginTransaction();
+
         if(pos==1)
         {
-         DisplaySection top=DisplaySection.newInstance("Most Popular Movies","http://api.themoviedb.org/3/movie/popular?api_key=a444d7a7a662a5a702515b3735ee4f49");
-            DisplaySection bottom=DisplaySection.newInstance("Most Popular Movies","http://api.themoviedb.org/3/movie/now_playing?api_key=a444d7a7a662a5a702515b3735ee4f49");
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            String frag1 = prefs.getString(getString(R.string.tv_cat_key1),
+                    "0");
+            String frag2 = prefs.getString(getString(R.string.tv_cat_key2),
+                    "1");
+            DisplaySectionTv top=null;
+            DisplaySectionTv bottom=null;
+
+
+
+            switch (frag1)
+            {
+                case "0":
+                    top=DisplaySectionTv.newInstance("Most Popular Shows","http://api.themoviedb.org/3/tv/popular?api_key=a444d7a7a662a5a702515b3735ee4f49");
+                    break;
+                case "1":
+                    top=DisplaySectionTv.newInstance("Top Rated Shows","http://api.themoviedb.org/3/tv/top_rated?api_key=a444d7a7a662a5a702515b3735ee4f49");
+                    break;
+                case "2":
+                    top=DisplaySectionTv.newInstance("On the Air","http://api.themoviedb.org/3/tv/on_the_air?api_key=a444d7a7a662a5a702515b3735ee4f49");
+                    break;
+                case "3":
+                    top=DisplaySectionTv.newInstance("Airing Today","http://api.themoviedb.org/3/tv/airing_today?api_key=a444d7a7a662a5a702515b3735ee4f49");
+                    break;
+
+            }
+            switch (frag2)
+            {
+                case "0":
+                    bottom=DisplaySectionTv.newInstance("Most Popular Shows","http://api.themoviedb.org/3/tv/popular?api_key=a444d7a7a662a5a702515b3735ee4f49");
+                    break;
+                case "1":
+                    bottom=DisplaySectionTv.newInstance("Top Rated Shows","http://api.themoviedb.org/3/tv/top_rated?api_key=a444d7a7a662a5a702515b3735ee4f49");
+                    break;
+                case "2":
+                    bottom=DisplaySectionTv.newInstance("On the Air","http://api.themoviedb.org/3/tv/on_the_air?api_key=a444d7a7a662a5a702515b3735ee4f49");
+                    break;
+                case "3":
+                    bottom=DisplaySectionTv.newInstance("Airing Today","http://api.themoviedb.org/3/tv/airing_today?api_key=a444d7a7a662a5a702515b3735ee4f49");
+                    break;
+
+            }
+
+
+
+
 
             txn.add(R.id.frag_container_1,top,null);
             txn.add(R.id.frag_container_2,bottom,null).commit();

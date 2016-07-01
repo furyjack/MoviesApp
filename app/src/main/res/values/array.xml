@@ -37,6 +37,25 @@
 
     </string-array>
 
+    <string-array name="tv_category">
+
+        <item>
+            Most popular
+        </item>
+
+         <item>
+            Top Rated
+        </item>
+         <item>
+            On the Air
+        </item>
+         <item>
+            Airing Today
+        </item>
+
+
+    </string-array>
+
 
 
 </resources>

@@ -33,8 +33,8 @@ public class Movies {
        ArrayList<String> overview=JsonTest.get_overview(jsonstr);
        ArrayList<String> rating =JsonTest.get_rating(jsonstr);
        ArrayList<String> level=JsonTest.get_level(jsonstr);
-       ArrayList<String> release_date=JsonTest.get_release(jsonstr);
-       ArrayList<String> name=JsonTest.get_name(jsonstr);
+       ArrayList<String> release_date=JsonTest.get_release(jsonstr,"m");
+       ArrayList<String> name=JsonTest.get_name(jsonstr,"m");
 
        mlist=new ArrayList<>();
        for(int i=0;i<movie_url.size();i++) {
