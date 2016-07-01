@@ -21,6 +21,25 @@
 
         />
 
+    <ListPreference
+        android:title="Tv Categories Top"
+        android:defaultValue="1"
+        android:entries="@array/tv_category"
+        android:key="@string/tv_cat_key1"
+        android:entryValues="@array/movie_cat_value"
+
+        />
+
+    <ListPreference
+        android:title="Tv Categories Bottom"
+        android:defaultValue="1"
+        android:entries="@array/tv_category"
+        android:key="@string/tv_cat_key2"
+        android:entryValues="@array/movie_cat_value"
+
+        />
+
+
 
 
 

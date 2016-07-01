@@ -20,6 +20,8 @@ public class SettingActivity extends PreferenceActivity implements Preference.On
         // updated when the preference changes.
         bindPreferenceSummaryToValue(findPreference(getString(R.string.mv_cat_key)));
         bindPreferenceSummaryToValue(findPreference(getString(R.string.mv_cat_key1)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.tv_cat_key1)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.tv_cat_key2)));
     }
 
     /**
