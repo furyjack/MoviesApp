@@ -1,0 +1,3 @@
+# MoviesApp
+...
+This project aims at showing you details of any movie or tv shows across the globe:)
