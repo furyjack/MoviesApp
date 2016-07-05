@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#212121"
-
+    android:scrollbarAlwaysDrawHorizontalTrack="true"
     xmlns:tools="http://schemas.android.com/tools"
 
     >
@@ -50,7 +50,7 @@
                 android:id="@+id/rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="30dp"
+                android:paddingTop="30dp" android:scrollbarAlwaysDrawHorizontalTrack="true"
                 android:text="8.0/10"
                 android:textColor="#ffffff"
                 android:textSize="24sp"
@@ -68,7 +68,7 @@
 
                 android:text="U/A"
                 android:textColor="#ffffff"
-                android:textSize="50sp"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="10dp"
