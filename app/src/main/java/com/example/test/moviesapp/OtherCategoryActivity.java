@@ -4,6 +4,8 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
@@ -19,11 +21,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 public class OtherCategoryActivity extends AppCompatActivity {
     public static final String TAG = "haala";
  private int pos;
 
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
     void settoolbar_nav()
     {
@@ -84,6 +93,10 @@ public class OtherCategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(!isNetworkAvailable()) {
+            Toast.makeText(getApplicationContext(), "Please Connect To Internet", Toast.LENGTH_SHORT).show();
+            finish();
+        }
         setContentView(R.layout.activity_main);
          pos = getIntent().getIntExtra("pos", 0);
         settoolbar_nav();
@@ -93,6 +106,10 @@ public class OtherCategoryActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if(!isNetworkAvailable()) {
+            Toast.makeText(getApplicationContext(), "Please Connect To Internet", Toast.LENGTH_SHORT).show();
+            finish();
+        }
         FragmentManager mngr=getSupportFragmentManager();
 
         FragmentTransaction txn=mngr.beginTransaction();
