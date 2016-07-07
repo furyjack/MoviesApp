@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class DisplaySection extends Fragment {
 
     TextView title;
     OnCreateViewCalledListener ocvcl;
+    public static final String TAG="logs";
 
     private String type;
     private String query;
@@ -45,7 +47,7 @@ public class DisplaySection extends Fragment {
     }
 
     void setRecyclerView(View layout) {
-
+        Log.d(TAG, "setRecyclerView: ");
         FetchMovieTask task = new FetchMovieTask();
         String jsonstr = null;
         try {

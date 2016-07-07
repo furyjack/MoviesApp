@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -17,18 +18,61 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    private DrawerLayout mDrawer;
+    private Toolbar toolbar;
+    private NavigationView nvDrawer;
+    private ActionBarDrawerToggle drawerToggle;
+
 
     public static final String TAG = "haala";
+
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        selectDrawerItem(menuItem);
+                        return true;
+                    }
+                });
+    }
+
+    public void selectDrawerItem(MenuItem menuItem) {
+        Intent i = new Intent(MainActivity.this, OtherCategoryActivity.class);
+
+
+        switch (menuItem.getItemId()) {
+
+            case R.id.nav_tv:
+
+                i.putExtra("pos", 1);
+                startActivity(i);
+                break;
+            case R.id.nav_celebs:
+
+                i.putExtra("pos", 2);
+                startActivity(i);
+                break;
+            case R.id.nav_review:
+
+                i.putExtra("pos", 3);
+                startActivity(i);
+                break;
+
+        }
+
+        menuItem.setChecked(true);
+        mDrawer.closeDrawers();
+
+
+    }
+
 
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
@@ -39,15 +83,28 @@ public class MainActivity extends AppCompatActivity {
 
     void settoolbar_nav() {
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
-        myToolbar.setTitle(R.string.app_name);
-        String[] Titles = getResources().getStringArray(R.array.titile);
-        final DrawerLayout mdrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle mtoggle = new ActionBarDrawerToggle(this, mdrawer, myToolbar, R.string.app_name, R.string.app_name);
-        mtoggle.setHomeAsUpIndicator(R.drawable.ic_drawer);
-        myToolbar.setNavigationIcon(R.drawable.ic_drawer);
-        final ListView mdrawerlist = (ListView) findViewById(R.id.left_drawer);
+        toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+
+
+        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        nvDrawer = (NavigationView) findViewById(R.id.nvView);
+        setupDrawerContent(nvDrawer);
+        drawerToggle= new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
+        mDrawer.addDrawerListener(drawerToggle);
+        Menu menu=nvDrawer.getMenu();
+        menu.findItem(R.id.menu_search).setVisible(false);
+
+
+    }
+
+
+
+
+
+        // ActionBarDrawerToggle mtoggle = new ActionBarDrawerToggle(this, mdrawer, myToolbar, R.string.app_name, R.string.app_name);
+
+      /*  final ListView mdrawerlist = (ListView) findViewById(R.id.left_drawer);
         if (mdrawerlist != null) {
             mdrawerlist.setAdapter(new ArrayAdapter<String>(this,
                     R.layout.drawer_list_item, Titles));
@@ -72,8 +129,8 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+*/
 
-    }
 
 
     @Override
@@ -145,10 +202,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.drawer_view, menu);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
-        // Assumes current activity is the searchable activity
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setIconifiedByDefault(false);
 
@@ -161,10 +217,23 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_settings)
             startActivity(new Intent(this, SettingActivity.class));
+        if (drawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
+
 
 
         return true;
 
+    }
+
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        drawerToggle.syncState();
     }
 
 

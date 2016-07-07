@@ -1,0 +1,46 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_mov"
+            android:icon="@drawable/ic_movie"
+            android:title="Movies"
+            app:showAsAction="never"
+            />
+        <item
+            android:id="@+id/nav_tv"
+            android:icon="@drawable/ic_tv"
+            android:title="Tv shows"
+            app:showAsAction="never"
+            />
+        <item
+            android:id="@+id/nav_celebs"
+            android:icon="@drawable/ic_celebs"
+            android:title="Celebrities"
+            app:showAsAction="never"
+            />
+        <item
+            android:id="@+id/nav_review"
+            android:icon="@drawable/ic_review"
+            android:title="Reviews"
+            app:showAsAction="never"
+            />
+
+        <item android:id="@+id/action_settings"
+            android:title="@string/action_settings"
+            android:orderInCategory="100"
+            android:icon="@drawable/ic_settings"
+            app:showAsAction="never"
+           />
+        <item
+            android:icon="@android:drawable/ic_search_category_default"
+            android:title="Search"
+            android:id="@+id/menu_search"
+            app:actionViewClass="android.widget.SearchView"
+            app:showAsAction="collapseActionView|always"
+
+            />
+    </group>
+
+</menu>

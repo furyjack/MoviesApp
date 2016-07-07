@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#01579B"
+            android:background="#673AB7"
             android:padding="18dp"
             android:text="Interstellar (2014)"
             android:textColor="#ffffff"
