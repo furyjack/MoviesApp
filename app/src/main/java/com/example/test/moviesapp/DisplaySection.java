@@ -29,14 +29,24 @@ public class DisplaySection extends Fragment {
     TextView title;
     OnCreateViewCalledListener ocvcl;
 
-   private String type;
+    private String type;
     private String query;
     private Context context;
 
+    public static DisplaySection newInstance(String t, String q) {
+
+        Bundle args = new Bundle();
+        args.putString("title", t);
+        args.putString("query", q);
+
+        DisplaySection fragment = new DisplaySection();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     void setRecyclerView(View layout) {
 
-        FetchMovieTask task=new FetchMovieTask();
+        FetchMovieTask task = new FetchMovieTask();
         String jsonstr = null;
         try {
             jsonstr = (task.execute(query)).get();
@@ -63,35 +73,20 @@ public class DisplaySection extends Fragment {
 
     }
 
-    public void setOnCreateViewCalledListener(OnCreateViewCalledListener listener)
-    {
-        this.ocvcl=listener;
+    public void setOnCreateViewCalledListener(OnCreateViewCalledListener listener) {
+        this.ocvcl = listener;
     }
 
+    public void setup(View layout) {
 
-     public static DisplaySection newInstance(String t,String q) {
-
-        Bundle args = new Bundle();
-         args.putString("title",t);
-         args.putString("query",q);
-
-        DisplaySection fragment = new DisplaySection();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    public void setup(View layout)
-    {
-
-        title= (TextView) layout.findViewById(R.id.f_tv_title);
+        title = (TextView) layout.findViewById(R.id.f_tv_title);
 
 
-        Bundle args=getArguments();
-        type=args.getString("title");
-        query=args.getString("query");
+        Bundle args = getArguments();
+        type = args.getString("title");
+        query = args.getString("query");
 
-        context=(getActivity()).getApplicationContext();
-
+        context = (getActivity()).getApplicationContext();
 
 
     }
@@ -100,21 +95,17 @@ public class DisplaySection extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View layout=inflater.inflate(R.layout.fragment_display_section, container, false);
+        View layout = inflater.inflate(R.layout.fragment_display_section, container, false);
 
         setup(layout);
         setRecyclerView(layout);
         title.setText(type);
 
 
-
-
-
         return layout;
     }
 
-    public interface OnCreateViewCalledListener
-    {
+    public interface OnCreateViewCalledListener {
         void onCreateViewCalled();
 
     }
@@ -179,8 +170,6 @@ public class DisplaySection extends Fragment {
             return movieArrayList.size();
         }
     }
-
-
 
 
 }

@@ -30,7 +30,7 @@ public class Detail_Movie_Activity extends AppCompatActivity {
         String Ov = extra.getString("overview");
         String R = extra.getString("date");
         String lev = extra.getString("level");
-        String ratin = extra.getString("rating")+"/10.0";
+        String ratin = extra.getString("rating") + "/10.0";
         String uri = extra.getString("picture_url");
 
 

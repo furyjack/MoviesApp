@@ -11,12 +11,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class FetchMovieTask extends AsyncTask<String,Void,String> {
+public class FetchMovieTask extends AsyncTask<String, Void, String> {
 
-    public static final String TAG="logging";
+    public static final String TAG = "logging";
+
     @Override
     protected String doInBackground(String... params) {
-        String query=params[0];
+        String query = params[0];
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
@@ -58,14 +59,9 @@ public class FetchMovieTask extends AsyncTask<String,Void,String> {
 
             return MovieJsonStr;
 
-        }
-        catch (IOException E)
-        {
+        } catch (IOException E) {
             E.printStackTrace();
-        }
-
-
-        finally {
+        } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
             }
@@ -78,9 +74,6 @@ public class FetchMovieTask extends AsyncTask<String,Void,String> {
             }
         }
         return null;
-
-
-
 
 
     }

@@ -7,7 +7,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
-public class SettingActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener{
+public class SettingActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener {
 
 
     @Override
@@ -59,15 +59,6 @@ public class SettingActivity extends PreferenceActivity implements Preference.On
         }
         return true;
     }
-
-
-
-
-
-
-
-
-
 
 
 }

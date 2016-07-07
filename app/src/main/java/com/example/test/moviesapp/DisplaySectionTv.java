@@ -1,10 +1,10 @@
 package com.example.test.moviesapp;
 
 
-import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-public class DisplaySectionTv extends Fragment{
+public class DisplaySectionTv extends Fragment {
 
     TextView title;
     OnCreateViewCalledListener ocvcl;
@@ -29,10 +29,20 @@ public class DisplaySectionTv extends Fragment{
     private String query;
     private Context context;
 
+    public static DisplaySectionTv newInstance(String t, String q) {
+
+        Bundle args = new Bundle();
+        args.putString("title", t);
+        args.putString("query", q);
+
+        DisplaySectionTv fragment = new DisplaySectionTv();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     void setRecyclerView(View layout) {
 
-        FetchMovieTask task=new FetchMovieTask();
+        FetchMovieTask task = new FetchMovieTask();
         String jsonstr = null;
         try {
             jsonstr = (task.execute(query)).get();
@@ -59,35 +69,20 @@ public class DisplaySectionTv extends Fragment{
 
     }
 
-    public void setOnCreateViewCalledListener(OnCreateViewCalledListener listener)
-    {
-        this.ocvcl=listener;
+    public void setOnCreateViewCalledListener(OnCreateViewCalledListener listener) {
+        this.ocvcl = listener;
     }
 
+    public void setup(View layout) {
 
-    public static DisplaySectionTv newInstance(String t,String q) {
-
-        Bundle args = new Bundle();
-        args.putString("title",t);
-        args.putString("query",q);
-
-        DisplaySectionTv fragment = new DisplaySectionTv();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    public void setup(View layout)
-    {
-
-        title= (TextView) layout.findViewById(R.id.f_tv_title);
+        title = (TextView) layout.findViewById(R.id.f_tv_title);
 
 
-        Bundle args=getArguments();
-        type=args.getString("title");
-        query=args.getString("query");
+        Bundle args = getArguments();
+        type = args.getString("title");
+        query = args.getString("query");
 
-        context=(getActivity()).getApplicationContext();
-
+        context = (getActivity()).getApplicationContext();
 
 
     }
@@ -96,21 +91,17 @@ public class DisplaySectionTv extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View layout=inflater.inflate(R.layout.fragment_display_section, container, false);
+        View layout = inflater.inflate(R.layout.fragment_display_section, container, false);
 
         setup(layout);
         setRecyclerView(layout);
         title.setText(type);
 
 
-
-
-
         return layout;
     }
 
-    public interface OnCreateViewCalledListener
-    {
+    public interface OnCreateViewCalledListener {
         void onCreateViewCalled();
 
     }
@@ -152,7 +143,6 @@ public class DisplaySectionTv extends Fragment{
             Picasso.with(context).load(mobject.poster_url).into(holder.ivMoviePoster);
 
 
-
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -164,7 +154,7 @@ public class DisplaySectionTv extends Fragment{
                     tags.putString("picture_url", obj.poster_url);
                     tags.putString("date", obj.first_on_air);
                     tags.putString("rating", obj.rating);
-                    tags.putString("level","U/A");
+                    tags.putString("level", "U/A");
 
                     go_deatil.putExtras(tags);
 
@@ -178,19 +168,6 @@ public class DisplaySectionTv extends Fragment{
             return tvArrayList.size();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

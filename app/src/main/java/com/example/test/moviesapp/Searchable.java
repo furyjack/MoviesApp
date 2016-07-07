@@ -13,38 +13,35 @@ import java.util.concurrent.ExecutionException;
 public class Searchable extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchable);
-        Intent intent=getIntent();
+        Intent intent = getIntent();
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            String []arr=query.split(" ");
-            ArrayList<String> keywords=new ArrayList<>(Arrays.asList(arr));
-            String Title="";
-            for(int i=0;i<keywords.size()-1;i++)
-            {
-                Title+=keywords.get(i)+"+";
+            String[] arr = query.split(" ");
+            ArrayList<String> keywords = new ArrayList<>(Arrays.asList(arr));
+            String Title = "";
+            for (int i = 0; i < keywords.size() - 1; i++) {
+                Title += keywords.get(i) + "+";
             }
-            Title+=keywords.get(keywords.size()-1);
-            query="http://www.omdbapi.com/?t="+Title+"&y=&plot=Full&r=json";
-            String jsonstr="";
+            Title += keywords.get(keywords.size() - 1);
+            query = "http://www.omdbapi.com/?t=" + Title + "&y=&plot=Full&r=json";
+            String jsonstr = "";
             try {
 
-                jsonstr=new FetchMovieTask().execute(query).get();
+                jsonstr = new FetchMovieTask().execute(query).get();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
 
-            JsonSearchClass.movieobject obj=new JsonSearchClass(jsonstr).get_movie();
-            if(obj!=null)
-            {
-                Intent i=new Intent(this,Detail_Movie_Activity.class);
+            JsonSearchClass.movieobject obj = new JsonSearchClass(jsonstr).get_movie();
+            if (obj != null) {
+                Intent i = new Intent(this, Detail_Movie_Activity.class);
                 Bundle tags = new Bundle();
                 tags.putString("name", obj.name);
                 tags.putString("overview", obj.overview);
@@ -56,16 +53,10 @@ public class Searchable extends AppCompatActivity {
                 startActivity(i);
 
 
-
-
-
-            }
-            else
-            {
+            } else {
                 Toast.makeText(Searchable.this, "No Media Found", Toast.LENGTH_SHORT).show();
                 finish();
             }
-
 
 
         }
