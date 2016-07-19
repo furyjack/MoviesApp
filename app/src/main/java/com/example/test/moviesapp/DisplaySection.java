@@ -165,6 +165,8 @@ public class DisplaySection extends Fragment {
                     startActivity(go_deatil);
                 }
             });
+
+
         }
 
         @Override
